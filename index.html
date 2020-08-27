@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <script src="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js"></script>
+    <link
+      href="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="index.css" />
+
+    <!-- <script src="https://api.tiles.mapbox.com/mapbox.js/plugins/turf/v3.0.11/turf.min.js"></script> -->
+    <script src="https://npmcdn.com/@turf/turf@5.1.6/turf.min.js"></script>
+    <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-draw/v1.2.0/mapbox-gl-draw.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-draw/v1.2.0/mapbox-gl-draw.css"
+      type="text/css"
+    />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="main">
+      <div class="panel">
+        <button class="btn" onclick="toggleFeatures()">Show Features</button>
+        <button class="btn" onclick="measureDist()">Measure Distance</button>
+        <button class="btn" onclick="toggleAddMarker()">Add Marker</button>
+      </div>
+      <div class="map-area">
+        <div id="map" style="width: 100%; height: 100vh"></div>
+        <pre id="info"></pre>
+        <div class="calculation-box">
+          <p>Draw a polygon using the draw tools.</p>
+          <div id="calculated-area"></div>
+        </div>
+        <div id="distance" class="distance-container"></div>
+        <nav id="menu"></nav>
+        <pre id="features"></pre>
+      </div>
+    </div>
+
+    <script>
+      mapboxgl.accessToken =
+        'pk.eyJ1Ijoicmhvc3NhaW4iLCJhIjoiY2o4Ymt0NndlMHVoMDMzcnd1ZGs4dnJjMSJ9.5Y-mrWQCMXqWTe__0J5w4w';
+      var map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/mapbox/dark-v10', // stylesheet location
+        center: [90.399452, 23.777176], // starting position [lng, lat]
+        zoom: 5, // starting zoom
+      });
+      //map.getCanvas().style.cursor = 'cross-hair';
+      map.addControl(new mapboxgl.FullscreenControl());
+      map.addControl(new mapboxgl.NavigationControl());
+    </script>
+    <script src="/scripts/custom.js"></script>
+    <script src="/scripts/pointerInfo.js"></script>
+    <script src="/scripts/distance.js"></script>
+    <script src="/scripts/polygonDraw.js"></script>
+    <script src="/scripts/layerVisibiliy.js"></script>
+    <script src="/scripts/tooltip.js"></script>
+    <script src="/scripts/addMarker.js"></script>
+    <script src="/scripts/showFeatures.js"></script>
+    <script src="/scripts/cluster.js"></script>
+  </body>
+</html>
