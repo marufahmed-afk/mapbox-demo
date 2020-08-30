@@ -25,20 +25,65 @@
   <body>
     <div class="main">
       <div class="panel">
-        <button class="btn" onclick="toggleFeatures()">Show Features</button>
-        <button class="btn" onclick="measureDist()">Measure Distance</button>
-        <button class="btn" onclick="toggleAddMarker()">Add Marker</button>
+        <button id="feat-btn" class="btn" onclick="toggleFeatures()">
+          Show Features
+        </button>
+        <button id="marker-btn" class="btn" onclick="toggleAddMarker()">
+          Add Marker
+        </button>
+        <button id="dist-btn" class="btn" onclick="measureDist()">
+          Measure Distance
+        </button>
+        <button id="point-btn" class="btn" onclick="pointerFeat()">
+          Pointer Features
+        </button>
+        <button id="info-btn" class="btn" onclick="toggleInfo()">
+          Pointer Info
+        </button>
+        <button id="calc-btn" class="btn" onclick="toggleCalculationBox()">
+          Draw Polygon
+        </button>
       </div>
       <div class="map-area">
         <div id="map" style="width: 100%; height: 100vh"></div>
         <pre id="info"></pre>
-        <div class="calculation-box">
+        <div id="calculation-box">
           <p>Draw a polygon using the draw tools.</p>
           <div id="calculated-area"></div>
         </div>
         <div id="distance" class="distance-container"></div>
         <nav id="menu"></nav>
         <pre id="features"></pre>
+        <div id="menu-2">
+          <input
+            id="streets-v11"
+            type="radio"
+            name="rtoggle"
+            value="streets"
+            checked="checked"
+          />
+          <label for="streets-v11">streets</label>
+          <input id="light-v10" type="radio" name="rtoggle" value="light" />
+          <label for="light-v10">light</label>
+          <input id="dark-v10" type="radio" name="rtoggle" value="dark" />
+          <label for="dark-v10">dark</label>
+          <input
+            id="https://map.barikoi.com/styles/osm-liberty/style.json"
+            type="radio"
+            name="rtoggle"
+            value="outdoors"
+          />
+          <label for="https://map.barikoi.com/styles/osm-liberty/style.json"
+            >bkoi</label
+          >
+          <input
+            id="satellite-v9"
+            type="radio"
+            name="rtoggle"
+            value="satellite"
+          />
+          <label for="satellite-v9">satellite</label>
+        </div>
       </div>
     </div>
 
@@ -47,9 +92,10 @@
         'pk.eyJ1Ijoicmhvc3NhaW4iLCJhIjoiY2o4Ymt0NndlMHVoMDMzcnd1ZGs4dnJjMSJ9.5Y-mrWQCMXqWTe__0J5w4w';
       var map = new mapboxgl.Map({
         container: 'map',
-        style: 'mapbox://styles/mapbox/dark-v10', // stylesheet location
+        style: 'mapbox://styles/mapbox/streets-v11',
         center: [90.399452, 23.777176], // starting position [lng, lat]
         zoom: 5, // starting zoom
+        maxZoom: 18,
       });
       //map.getCanvas().style.cursor = 'cross-hair';
       map.addControl(new mapboxgl.FullscreenControl());
@@ -64,5 +110,7 @@
     <script src="/scripts/addMarker.js"></script>
     <script src="/scripts/showFeatures.js"></script>
     <script src="/scripts/cluster.js"></script>
+    <script src="/scripts/heatmap.js"></script>
+    <script src="/scripts/mapLayers.js"></script>
   </body>
 </html>

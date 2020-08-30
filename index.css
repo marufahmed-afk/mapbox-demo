@@ -2,6 +2,26 @@ body {
   margin: 0;
   padding: 0;
 }
+
+.btn {
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 3px 3px 30px -2px rgba(0, 0, 0, 0.1);
+  padding: 5px 15px;
+  font-size: 12px;
+  width: 100px;
+  height: 40px;
+  border: none;
+  margin-bottom: 10px;
+  outline: none;
+  cursor: pointer;
+}
+
+.btn-active {
+  background-color: #222 !important;
+  color: white;
+}
+
 .main {
   display: grid;
   grid-template-columns: auto 9fr;
@@ -35,7 +55,7 @@ body {
   width: 100%;
 }
 #info {
-  display: block;
+  display: none;
   position: relative;
   margin: 0px auto;
   width: 50%;
@@ -47,7 +67,7 @@ body {
   color: #222;
   background: #fff;
 }
-.calculation-box {
+#calculation-box {
   height: 75px;
   width: 150px;
   position: absolute;
@@ -56,6 +76,7 @@ body {
   background-color: rgba(255, 255, 255, 0.9);
   padding: 15px;
   text-align: center;
+  display: none;
 }
 
 p {
@@ -124,12 +145,19 @@ p {
   background: #3074a4;
 }
 
+#menu-2 {
+  position: absolute;
+  top: 0;
+  background: #fff;
+  padding: 10px;
+}
+
 #features {
   position: absolute;
   top: 0;
   right: 0;
   bottom: 0;
-  width: 50%;
+  width: 23%;
   overflow: auto;
   background: rgba(255, 255, 255, 0.8);
   display: none;
