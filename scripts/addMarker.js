@@ -4,8 +4,14 @@ map.on('click', function (e) {
   console.log('A click event has occurred at ' + e.lngLat.lng);
 
   if (markerFlag) {
+    // create the popup
+    var popup = new mapboxgl.Popup({ offset: 25 }).setText(
+      'Longitude: ' + e.lngLat.lng + 'Latitude: ' + e.lngLat.lat
+    );
     var marker = new mapboxgl.Marker()
       .setLngLat([e.lngLat.lng, e.lngLat.lat])
+      .setPopup(popup)
       .addTo(map);
+    currentMarkers.push(marker);
   }
 });

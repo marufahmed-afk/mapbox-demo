@@ -15,6 +15,9 @@
     <!-- <script src="https://api.tiles.mapbox.com/mapbox.js/plugins/turf/v3.0.11/turf.min.js"></script> -->
     <script src="https://npmcdn.com/@turf/turf@5.1.6/turf.min.js"></script>
     <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-draw/v1.2.0/mapbox-gl-draw.js"></script>
+    <script src="https://use.fontawesome.com/d769747ea3.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <link
       rel="stylesheet"
       href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-draw/v1.2.0/mapbox-gl-draw.css"
@@ -43,10 +46,40 @@
         <button id="calc-btn" class="btn" onclick="toggleCalculationBox()">
           Draw Polygon
         </button>
+        <button id="search-btn" class="btn" onclick="toggleSearchBox()">
+          Search Location
+        </button>
+        <button id="traffic-btn" class="btn">Show Traffic</button>
+        <a href="https://route.barikoi.com/" target="_blank"
+          ><button id="routing-btn" class="btn">Find Route</button>
+        </a>
+        <div class="loc-block">
+          <button id="loc-btn" class="btn" onclick="toggleLocationForm()">
+            Custom Location
+          </button>
+          <div id="loc-form">
+            <form id="theForm">
+              <label for="lat">Latitude</label>
+              <input type="text" name="lat" id="lat" />
+              <label for="lat">Longitude</label>
+              <input type="text" name="lng" id="lng" />
+              <input type="submit" id="submit-btn" value="Locate" />
+            </form>
+          </div>
+        </div>
+        <button id="clear-btn" class="btn" onclick="clearMarkers()">
+          Clear Markers
+        </button>
       </div>
       <div class="map-area">
         <div id="map" style="width: 100%; height: 100vh"></div>
         <pre id="info"></pre>
+        <div id="search-box">
+          <input id="acInput" type="text" placeholder="Search location..." />
+          <div id="autocomplete">
+            <ul id="result"></ul>
+          </div>
+        </div>
         <div id="calculation-box">
           <p>Draw a polygon using the draw tools.</p>
           <div id="calculated-area"></div>
@@ -94,13 +127,14 @@
         container: 'map',
         style: 'mapbox://styles/mapbox/streets-v11',
         center: [90.399452, 23.777176], // starting position [lng, lat]
-        zoom: 5, // starting zoom
+        zoom: 14, // starting zoom
         maxZoom: 18,
       });
       //map.getCanvas().style.cursor = 'cross-hair';
       map.addControl(new mapboxgl.FullscreenControl());
       map.addControl(new mapboxgl.NavigationControl());
     </script>
+    <script src="/scripts/actions.js"></script>
     <script src="/scripts/custom.js"></script>
     <script src="/scripts/pointerInfo.js"></script>
     <script src="/scripts/distance.js"></script>
@@ -112,5 +146,6 @@
     <script src="/scripts/cluster.js"></script>
     <script src="/scripts/heatmap.js"></script>
     <script src="/scripts/mapLayers.js"></script>
+    <script src="/scripts/traffic.js"></script>
   </body>
 </html>
