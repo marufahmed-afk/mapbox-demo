@@ -85,30 +85,21 @@
           <div id="calculated-area"></div>
         </div>
         <div id="distance" class="distance-container"></div>
-        <nav id="menu"></nav>
+        <!-- <nav id="menu"></nav> -->
         <pre id="features"></pre>
         <div id="menu-2">
-          <input
-            id="streets-v11"
-            type="radio"
-            name="rtoggle"
-            value="streets"
-            checked="checked"
-          />
-          <label for="streets-v11">streets</label>
-          <input id="light-v10" type="radio" name="rtoggle" value="light" />
-          <label for="light-v10">light</label>
-          <input id="dark-v10" type="radio" name="rtoggle" value="dark" />
-          <label for="dark-v10">dark</label>
           <input
             id="https://map.barikoi.com/styles/osm-liberty/style.json"
             type="radio"
             name="rtoggle"
-            value="outdoors"
+            value="bkoi"
+            checked="checked"
           />
           <label for="https://map.barikoi.com/styles/osm-liberty/style.json"
             >bkoi</label
           >
+          <input id="dark-v10" type="radio" name="rtoggle" value="dark" />
+          <label for="dark-v10">dark</label>
           <input
             id="satellite-v9"
             type="radio"
@@ -125,7 +116,7 @@
         'pk.eyJ1Ijoicmhvc3NhaW4iLCJhIjoiY2o4Ymt0NndlMHVoMDMzcnd1ZGs4dnJjMSJ9.5Y-mrWQCMXqWTe__0J5w4w';
       var map = new mapboxgl.Map({
         container: 'map',
-        style: 'mapbox://styles/mapbox/streets-v11',
+        style: 'https://map.barikoi.com/styles/osm-liberty/style.json',
         center: [90.399452, 23.777176], // starting position [lng, lat]
         zoom: 14, // starting zoom
         maxZoom: 18,
